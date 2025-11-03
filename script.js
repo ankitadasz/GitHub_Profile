@@ -31,7 +31,7 @@ const fetchGithub = async () => {
     repos.innerText = data.public_repos;
     profile = data.html_url;
   } catch (error) {
-    container.innerHTML = "User Not Found";
+    console.log({error});
   }
 };
 button.addEventListener("click", () => {
