@@ -16,12 +16,22 @@ const fetchGithub = async () => {
     const res = await fetch(`${url}/${input.value}`);
     const data = await res.json();
     if (!res.ok || data.message === "Not Found") {
-      container.innerHTML = "<h3>User Not Found ❌</h3>";
-      return;
-    }
+  container.style.visibility = "visible";
+  profileBtn.style.display = "none"; 
+  name.innerText = "User Not Found ❌";
+  username.innerText = "";
+  about.innerText = "";
+  follower.innerText = "-";
+  following.innerText = "-";
+  repos.innerText = "-";
+  image.src = "https://avatars.githubusercontent.com/u/583231?v=4"; 
+  return;
+}
+
     console.log("data", data);
 
     container.style.visibility = "visible";
+    profileBtn.style.display = "visible";
     image.src = data.avatar_url;
     name.innerText = data.name;
     username.innerText = data.login;
